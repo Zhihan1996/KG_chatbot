@@ -1,8 +1,10 @@
 *.pyc
+*.py[cod]
 finished_files/
 logs/
 small_*
 out*
-log/
-data/
+GTTP/log/
+GTTP/data/
+ccm/data/
 __pycecha__
