@@ -3,6 +3,6 @@ finished_files/
 logs/
 small_*
 out*
-./log/
-./data/
-./__pycecha__
+log/
+data/
+__pycecha__
