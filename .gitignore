@@ -1,10 +1,9 @@
-*.pyc
 *.py[cod]
-finished_files/
-logs/
-small_*
-out*
 GTTP/log/
 GTTP/data/
+GTTP/.idea/
 ccm/data/
+ccm/train/
+ccm/.idea/
+ccm/__pycecha__/
 __pycecha__

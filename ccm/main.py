@@ -105,7 +105,7 @@ def build_vocab(path, raw_vocab, trans='transE'):
     with open('%s/entity_%s.txt' % (path, trans)) as f:
         for i, line in enumerate(f):
             s = line.strip().split('\t')
-            entity_embed.append(map(float, s))
+            entity_embed.append(s)
 
     print("Loading relation vectors...")
     relation_embed = []
@@ -319,16 +319,16 @@ with tf.Session(config=config) as sess:
             print("Created model with fresh parameters.")
             tf.global_variables_initializer().run()
             op_in = model.symbol2index.insert(constant_op.constant(vocab),
-                constant_op.constant(range(FLAGS.symbols), dtype=tf.int64))
+                constant_op.constant(list(range(FLAGS.symbols)), dtype=tf.int64))
             sess.run(op_in)
             op_out = model.index2symbol.insert(constant_op.constant(
-                range(FLAGS.symbols), dtype=tf.int64), constant_op.constant(vocab))
+                list(range(FLAGS.symbols)), dtype=tf.int64), constant_op.constant(vocab))
             sess.run(op_out)
             op_in = model.entity2index.insert(constant_op.constant(entity_vocab+relation_vocab),
-                constant_op.constant(range(len(entity_vocab)+len(relation_vocab)), dtype=tf.int64))
+                constant_op.constant(list(range(len(entity_vocab)+len(relation_vocab))), dtype=tf.int64))
             sess.run(op_in)
             op_out = model.index2entity.insert(constant_op.constant(
-                range(len(entity_vocab)+len(relation_vocab)), dtype=tf.int64), constant_op.constant(entity_vocab+relation_vocab))
+                list(range(len(entity_vocab)+len(relation_vocab))), dtype=tf.int64), constant_op.constant(entity_vocab+relation_vocab))
             sess.run(op_out)
 
         if FLAGS.log_parameters:
